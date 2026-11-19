@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Detail Studio | PPF Kaplama, Seramik &amp; Oto Detailing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1322;
+      --card: #10182b;
+      --card-hover: #152038;
+      --border: rgba(148, 163, 184, 0.14);
+      --border-accent: rgba(34, 211, 238, 0.45);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #22d3ee;
+      --accent-dark: #06b6d4;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 15% 10%, rgba(6, 182, 212, 0.12), transparent 35%),
+                  radial-gradient(circle at 85% 25%, rgba(34, 211, 238, 0.08), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.84);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #0284c7);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #04101d;
+      box-shadow: 0 0 24px rgba(34, 211, 238, 0.3);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #04101d;
+      box-shadow: 0 8px 28px rgba(34, 211, 238, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(34, 211, 238, 0.38);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-accent);
+      background: rgba(34, 211, 238, 0.08);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: #03150a;
+      box-shadow: 0 8px 26px rgba(34, 197, 94, 0.25);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(34, 197, 94, 0.36);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 58px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.28);
+      font-size: 13px;
+      font-weight: 600;
+      color: #cffafe;
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      color: #facc15;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    .accent-text {
+      background: linear-gradient(90deg, #67e8f9, #22d3ee, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .brands-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      color: #64748b;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .brands-bar strong {
+      color: #cbd5e1;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      aspect-ratio: 4 / 4.2;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: auto 16px 16px 16px;
+      background: rgba(7, 11, 20, 0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-overlay strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .hero-overlay span {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-badge {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(34, 211, 238, 0.14);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Stats */
+    .stats {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 22px;
+      background: rgba(16, 24, 43, 0.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .stat strong span {
+      color: var(--accent);
+    }
+
+    .stat p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 72px 0;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3.6vw, 38px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 640px;
+      font-size: 15px;
+      margin-bottom: 34px;
+    }
+
+    /* Services */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-accent);
+      background: var(--card-hover);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.26);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(34, 211, 238, 0.1);
+      color: #a5f3fc;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    /* PPF Micron Panel */
+    .ppf-panel {
+      background: linear-gradient(180deg, rgba(16, 24, 43, 0.95), rgba(10, 15, 28, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+    }
+
+    .ppf-card {
+      background: rgba(7, 11, 20, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ppf-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.1), rgba(7, 11, 20, 0.85));
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.12);
+    }
+
+    .ppf-badge {
+      display: inline-block;
+      width: fit-content;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #04101d;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .ppf-series {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ppf-micron {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 4px 0 16px;
+    }
+
+    .ppf-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .ppf-list li::before {
+      content: "✓ ";
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* Quote Wizard */
+    .wizard-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .step-block {
+      margin-bottom: 24px;
+    }
+
+    .step-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #04101d;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 15px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(7, 11, 20, 0.7);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+
+    .chip:hover {
+      border-color: var(--border-accent);
+      color: var(--text);
+    }
+
+    .chip.active {
+      background: rgba(34, 211, 238, 0.18);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35);
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(7, 11, 20, 0.8);
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .text-input:focus {
+      border-color: var(--accent);
+    }
+
+    .summary-card {
+      background: rgba(7, 11, 20, 0.85);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .summary-card h3 {
+      font-size: 17px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .summary-item {
+      margin-bottom: 14px;
+    }
+
+    .summary-item small {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .summary-item strong {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .summary-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4 / 4.4;
+      cursor: pointer;
+      background: var(--card);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 28px 14px 14px;
+      background: linear-gradient(transparent, rgba(7, 11, 20, 0.92));
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .gallery-caption span {
+      display: block;
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Reviews */
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .review-card p {
+      font-size: 14px;
+      color: #e2e8f0;
+    }
+
+    .review-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .review-footer span:last-child {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .info-row small {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .info-row strong {
+      font-size: 17px;
+      display: block;
+    }
+
+    .info-row p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .open-pill {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #86efac;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .studio-feature-box {
+      background: radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.16), transparent 50%),
+                  var(--card);
+      border: 1px solid var(--border-accent);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .feature-checks {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .feature-checks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-checks li span {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.16);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 90px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 90;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: #03150a;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.42);
+      transition: transform 0.2s ease;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(3, 6, 14, 0.92);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-height: 86vh;
+      max-width: 92vw;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-grid,
+      .wizard-box,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .ppf-panel,
+      .wizard-box {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 32px;
+      }
+      section {
+        padding: 52px 0;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .nav .btn {
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-icon">A</div>
+        <div class="brand-text">
+          <strong>APEX DETAIL</strong>
+          <span>PPF &amp; CAR STUDIO</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#ppf-serileri">PPF Serileri</a>
+        <a href="#teklif">Teklif Sihirbazı</a>
+        <a href="#uygulamalar">Uygulamalar</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+      <a href="#teklif" class="btn btn-primary">Randevu &amp; Teklif Al</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="pill">
+              <span class="stars">★★★★★</span>
+              <span>5,0 Google Puanı • Premium Detailing Stüdyosu</span>
+            </div>
+            <h1>
+              Aracınız İçin <span class="accent-text">Kusursuz Koruma</span> ve Showroom Parlaklığı.
+            </h1>
+            <p class="hero-desc">
+              %100 TPU şeffaf ve mat PPF boya koruma filmi, seramik kaplama, ısı kontrollü cam filmi ve detaylı iç-dış bakım uygulamalarını kontrollü stüdyo ortamında milimetrik işçilikle sunuyoruz.
+            </p>
+            <div class="hero-actions">
+              <a href="#teklif" class="btn btn-primary">10 Saniyede Teklif Hazırla →</a>
+              <a href="https://wa.me/905519740933?text=Merhaba%2C%20arac%C4%B1m%20i%C3%A7in%20PPF%20ve%20detayl%C4%B1%20bak%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-outline">WhatsApp'tan Yaz</a>
+            </div>
+            <div class="brands-bar">
+              <span>Çalıştığımız Seçkin Markalar:</span>
+              <strong>XPEL</strong>
+              <strong>ORACAL</strong>
+              <strong>LLUMAR</strong>
+              <strong>GYEON</strong>
+              <strong>3M</strong>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="arac1.jpg" alt="Apex Detail Studio PPF ve Boya Koruma Uygulaması" />
+            <div class="hero-overlay">
+              <div>
+                <strong>Butik Detailing Stüdyosu</strong>
+                <span>%100 TPU PPF • Seramik • Cam Filmi</span>
+              </div>
+              <div class="hero-badge">Randevulu Çalışma</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>5,0 <span>★</span></strong>
+            <p>Yüksek müşteri memnuniyeti</p>
+          </div>
+          <div class="stat">
+            <strong>160–250 <span>Mikron</span></strong>
+            <p>%100 TPU şeffaf &amp; mat film</p>
+          </div>
+          <div class="stat">
+            <strong>10 Yıl <span>Garanti</span></strong>
+            <p>Sararmaya ve çatlamaya karşı</p>
+          </div>
+          <div class="stat">
+            <strong>Araca Özel <span>Stüdyo</span></strong>
+            <p>Tozsuz ve kontrollü uygulama</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hizmetler -->
+    <section id="hizmetler">
+      <div class="container">
+        <div class="section-kicker">Hizmetlerimiz</div>
+        <h2 class="section-title">Aracınızın Değerini ve İlk Günkü Görünümünü Koruyoruz</h2>
+        <p class="section-sub">
+          Sıfır kilometre araçlardan üst segment modellere kadar tüm boya koruma ve yenileme süreçlerini şeffaf bilgilendirme ve garantili malzemelerle gerçekleştiriyoruz.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>PPF Boya Koruma Filmi</h3>
+            <p>Komple, kısmi veya ön kaput koruma. Taş sıçraması, çizik ve dış etkenlere karşı kendiliğinden yenilenen %100 TPU filmlerle maksimum zırh.</p>
+            <span class="tag">Şeffaf &amp; Mat Seçenekler</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">✨</div>
+            <h3>Seramik Kaplama &amp; Boya Koruma</h3>
+            <p>Kuş pisliği, reçine, UV güneş yanığı ve kılcal çiziklere karşı yüksek hidrofobik su iticilik ve derin ayna parlaklığı sağlayan koruma.</p>
+            <span class="tag">Derin Parlaklık &amp; UV Kalkan</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">🕶️</div>
+            <h3>Isı Korumalı Oto Cam Filmi</h3>
+            <p>%99 UV engelleme ve yüksek kızılötesi ısı reddi ile yazın serin sürüş, gece ise net görüş kalitesi sunan profesyonel cam filmleri.</p>
+            <span class="tag">Net Gece Görüşü</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">💎</div>
+            <h3>Pasta Cila &amp; Boya Düzeltme</h3>
+            <p>Yıkama kaynaklı harelenmeleri, hologramları ve yüzeysel çizikleri çok aşamalı polisaj ile gidererek boyanın gerçek derinliğini ortaya çıkarıyoruz.</p>
+            <span class="tag">Çok Aşamalı Polisaj</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧼</div>
+            <h3>Detaylı İç Temizlik (Oto Kuaför)</h3>
+            <p>Koltuk, tavan, taban, plastik aksam ve deri yüzeylerde özel bakım ürünleri ile hijyen, leke çıkarma ve antibakteriyel koruma.</p>
+            <span class="tag">Deri &amp; Kumaş Koruma</span>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔧</div>
+            <h3>Boyasız Göçük &amp; Bakım</h3>
+            <p>Aracın orijinal boyasına zarar vermeden kaporta göçüklerinin hassas onarımı ve düzenli PPF / seramik periyodik bakım işlemleri.</p>
+            <span class="tag">Orijinalliği Koruyan Onarım</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PPF Serileri -->
+    <section id="ppf-serileri">
+      <div class="container">
+        <div class="ppf-panel">
+          <div class="section-kicker">%100 Poliüretan (TPU) • Kendi Kendini Yenileyen Teknoloji</div>
+          <h2 class="section-title">PPF Boya Koruma Mikron Serileri</h2>
+          <p class="section-sub">
+            Sararmayan, optik şeffaflığını koruyan ve ısıyla kılcal çizikleri yok eden orijinal TPU PPF seçeneklerimizle aracınız için en doğru koruma kalınlığını birlikte seçiyoruz.
+          </p>
+
+          <div class="grid-3">
+            <div class="ppf-card">
+              <div>
+                <div class="ppf-series">Standart Koruma Serisi</div>
+                <div class="ppf-micron">160 Mikron</div>
+                <ul class="ppf-list">
+                  <li>Parlak ve Mat yüzey seçeneği</li>
+                  <li>%100 TPU elastik yapı</li>
+                  <li>Günlük taş izi ve çizik koruması</li>
+                  <li>Köşe katlamalı görünmez montaj</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ppf-card">
+              <div>
+                <div class="ppf-series">Yüksek Performans Serisi</div>
+                <div class="ppf-micron">185 Mikron</div>
+                <ul class="ppf-list">
+                  <li>Yüksek darbe emici kalın film</li>
+                  <li>Uzun yol ve otoyol kullanımı için ideal</li>
+                  <li>Yüksek hidrofobik pürüzsüz yüzey</li>
+                  <li>Isıyla hızlı çizik onarımı (Self-Healing)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ppf-card featured">
+              <div>
+                <div class="ppf-badge">Maksimum Koruma • En Çok Tercih Edilen</div>
+                <div class="ppf-series">Üst Segment Zırh Serisi</div>
+                <div class="ppf-micron">230–250 Mikron</div>
+                <ul class="ppf-list">
+                  <li>Üst segment araçlar için ağır darbe kalkanı</li>
+                  <li>Cam berraklığında mükemmel optik netlik</li>
+                  <li>Gelişmiş leke ve sararma direnci</li>
+                  <li>Uzun ömürlü yazılı garanti belgesi</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Akıllı Teklif Sihirbazı -->
+    <section id="teklif">
+      <div class="container">
+        <div class="section-kicker">Akıllı Teklif Sihirbazı</div>
+        <h2 class="section-title">Aracınıza Özel Net Fiyat &amp; Randevu Bilgisini Hemen Alın</h2>
+        <p class="section-sub">
+          Uzun mesajlar yazmanıza gerek yok. Araç tipinizi ve istediğiniz uygulamaları seçin; özetiniz tek tıkla WhatsApp hattımıza hazır mesaj olarak iletilsin.
+        </p>
+
+        <div class="wizard-box">
+          <div>
+            <div class="step-block">
+              <div class="step-label">
+                <span class="step-num">1</span>
+                <span>Araç Gövde Tipini Seçin</span>
+              </div>
+              <div class="chip-group" id="bodyTypeGroup">
+                <button type="button" class="chip" data-value="SUV / Jeep">SUV / Jeep</button>
+                <button type="button" class="chip active" data-value="Sedan">Sedan</button>
+                <button type="button" class="chip" data-value="Hatchback">Hatchback</button>
+                <button type="button" class="chip" data-value="Coupe / Spor">Coupe / Spor</button>
+                <button type="button" class="chip" data-value="Pickup / Ticari">Pickup / Ticari</button>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <div class="step-label">
+                <span class="step-num">2</span>
+                <span>İstediğiniz Uygulamaları Seçin (Birden Fazla Seçilebilir)</span>
+              </div>
+              <div class="chip-group" id="servicesGroup">
+                <button type="button" class="chip active" data-value="Komple Şeffaf PPF">Komple Şeffaf PPF</button>
+                <button type="button" class="chip" data-value="Komple Mat PPF">Komple Mat PPF</button>
+                <button type="button" class="chip" data-value="Ön Kaput / Kısmi PPF">Ön Kaput / Kısmi PPF</button>
+                <button type="button" class="chip" data-value="Seramik Kaplama">Seramik Kaplama</button>
+                <button type="button" class="chip" data-value="Oto Cam Filmi">Oto Cam Filmi</button>
+                <button type="button" class="chip" data-value="Pasta Cila &amp; Boya Koruma">Pasta Cila &amp; Boya Koruma</button>
+                <button type="button" class="chip" data-value="Detaylı İç Kuaför">Detaylı İç Kuaför</button>
+                <button type="button" class="chip" data-value="Boyasız Göçük Düzeltme">Boyasız Göçük Düzeltme</button>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <div class="step-label">
+                <span class="step-num">3</span>
+                <span>Araç Marka / Modeliniz (İsteğe Bağlı)</span>
+              </div>
+              <input type="text" id="carModelInput" class="text-input" placeholder="Örn: 2025 BMW 320i, Mercedes C200, Togg T10X..." />
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <h3>Teklif Özeti</h3>
+            <div class="summary-item">
+              <small>Araç Tipi</small>
+              <strong id="summaryBody">Sedan</strong>
+            </div>
+            <div class="summary-item">
+              <small>Seçilen İşlemler</small>
+              <strong id="summaryServices">Komple Şeffaf PPF</strong>
+            </div>
+            <div class="summary-item">
+              <small>Araç Bilgisi</small>
+              <strong id="summaryModel">Belirtilmedi</strong>
+            </div>
+            <a id="whatsappSubmit" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%; margin-top: 8px;">
+              WhatsApp'tan Net Fiyat Al →
+            </a>
+            <p class="summary-note">
+              Seçiminiz otomatik mesaj olarak hazırlanıp doğrudan +90 551 974 09 33 hattımıza aktarılır.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uygulamalar / Galeri -->
+    <section id="uygulamalar">
+      <div class="container">
+        <div class="section-kicker">Stüdyo Uygulamalarımız</div>
+        <h2 class="section-title">Son Teslim Ettiğimiz Araçlar</h2>
+        <p class="section-sub">
+          Her aracı stüdyomuzda detaylı ön temizlik ve boya ölçümünden geçirerek kusursuz finisajla teslim ediyoruz. İncelemek için görsellere tıklayabilirsiniz.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-src="arac1.jpg">
+            <img src="arac1.jpg" alt="Komple Şeffaf PPF Uygulaması" />
+            <div class="gallery-caption">
+              <span>200+ Mikron TPU</span>
+              Komple Şeffaf PPF
+            </div>
+          </div>
+          <div class="gallery-item" data-src="arac2.jpg">
+            <img src="arac2.jpg" alt="Seramik Kaplama ve Boya Koruma" />
+            <div class="gallery-caption">
+              <span>Çok Aşamalı Polisaj</span>
+              Seramik &amp; Ayna Parlaklığı
+            </div>
+          </div>
+          <div class="gallery-item" data-src="arac3.jpg">
+            <img src="arac3.jpg" alt="Mat PPF ve Cam Filmi" />
+            <div class="gallery-caption">
+              <span>Saten Görünüm</span>
+              Komple Mat PPF &amp; Cam Filmi
+            </div>
+          </div>
+          <div class="gallery-item" data-src="arac4.jpg">
+            <img src="arac4.jpg" alt="Showroom Detaylı Bakım" />
+            <div class="gallery-caption">
+              <span>İç &amp; Dış Detailing</span>
+              Showroom Teslimat Hazırlığı
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Yorumlar -->
+    <section>
+      <div class="container">
+        <div class="section-kicker">Müşteri Deneyimleri</div>
+        <h2 class="section-title">Müşterilerimizin Güvenle Tercih Ettiği Stüdyo</h2>
+        <p class="section-sub">
+          En büyük referansımız, aracını gönül rahatlığıyla teslim edip ilk günkü heyecanla geri alan mutlu müşterilerimiz.
+        </p>
+
+        <div class="grid-3">
+          <div class="review-card">
+            <div>
+              <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+              <p>"Sıfır aracımızı alır almaz komple PPF ve cam filmi için getirdik. Malzeme kalitesi, köşe katlamalarındaki titizlik ve işlem aşamalarının şeffaf şekilde paylaşılması gerçekten üst düzeydi."</p>
+            </div>
+            <div class="review-footer">
+              <span>Google Müşteri Yorumu</span>
+              <span>Komple PPF</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div>
+              <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+              <p>"Aracınızı gözünüz arkada kalmadan bırakabileceğiniz en düzenli ve titiz stüdyo. Randevu saatine sadık, işçilik tertemiz ve sonuç ilk günkü showroom parlaklığında."</p>
+            </div>
+            <div class="review-footer">
+              <span>Google Müşteri Yorumu</span>
+              <span>Seramik &amp; Pasta Cila</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div>
+              <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+              <p>"Kullanılan ürünlerin orijinalliğini ve kalınlığını teslim alırken bizzat gösterdiler. Süreç boyunca bilgilendirme yapmaları ve teslimat sonrası bakım tavsiyeleriyle fark yaratıyorlar."</p>
+            </div>
+            <div class="review-footer">
+              <span>Google Müşteri Yorumu</span>
+              <span>PPF &amp; Cam Filmi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="iletisim">
+      <div class="container">
+        <div class="section-kicker">İletişim &amp; Randevu</div>
+        <h2 class="section-title">Stüdyomuza Kahveye Bekleriz</h2>
+        <p class="section-sub">
+          Aracınızı yakından inceleyip boya durumuna ve kullanım alışkanlığınıza göre en doğru koruma paketini birlikte belirleyelim.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <div class="info-row">
+              <small>Telefon &amp; WhatsApp Hattı</small>
+              <strong><a href="tel:+905519740933">+90 551 974 09 33</a></strong>
+            </div>
+            <div class="info-row">
+              <small>Çalışma Saatleri</small>
+              <strong>Pazartesi – Cumartesi: 09:00 – 19:00</strong>
+              <span class="open-pill">Randevulu &amp; Kapalı Garaj Stüdyosu</span>
+            </div>
+            <div class="info-row">
+              <small>Konum &amp; Harita</small>
+              <p>Stüdyonuza özel Google Haritalar canlı konum entegrasyonu ve tek tıkla yol tarifi butonu bu alanda aktif edilir.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <a href="https://wa.me/905519740933?text=Merhaba%2C%20randevu%20ve%20detayl%C4%B1%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-primary">WhatsApp'tan Ulaş</a>
+              <a href="tel:+905519740933" class="btn btn-outline">Hemen Ara</a>
+            </div>
+          </div>
+
+          <div class="studio-feature-box">
+            <div>
+              <div class="section-kicker" style="margin-bottom: 6px;">Neden Apex Detail?</div>
+              <h3 style="font-size: 22px; margin-bottom: 14px;">Sıfır Hata, Şeffaf Süreç ve Garantili Teslimat</h3>
+              <ul class="feature-checks">
+                <li><span>✓</span> Her işlem öncesi mikron boya ölçümü ve detaylı ekspertiz</li>
+                <li><span>✓</span> Kesim ve montajda araca zarar vermeyen hassas uygulama</li>
+                <li><span>✓</span> Uygulama süresince fotoğraf ve video ile aşama bilgilendirmesi</li>
+                <li><span>✓</span> Orijinal faturalı ürün ve uzun ömürlü yazılı garanti</li>
+              </ul>
+            </div>
+            <a href="#teklif" class="btn btn-outline" style="width: fit-content;">Teklif Sihirbazına Dön ↑</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Apex Detail Studio — Örnek Web Sitesi Tasarımı</span>
+      <span>PPF Kaplama • Seramik Kaplama • Cam Filmi • Oto Kuaför</span>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/905519740933?text=Merhaba%2C%20web%20siteniz%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%20Bilgi%20alabilir%20miyim%3F" target="_blank" rel="noopener">
+    <span>💬</span> WhatsApp
+  </a>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Kapat">×</button>
+    <img id="lightboxImg" src="" alt="Uygulama Görseli" />
+  </div>
+
+  <script>
+    const PHONE = "905519740933";
+    let selectedBody = "Sedan";
+    let selectedServices = ["Komple Şeffaf PPF"];
+
+    const bodyBtns = document.querySelectorAll("#bodyTypeGroup .chip");
+    const serviceBtns = document.querySelectorAll("#servicesGroup .chip");
+    const modelInput = document.getElementById("carModelInput");
+    const summaryBody = document.getElementById("summaryBody");
+    const summaryServices = document.getElementById("summaryServices");
+    const summaryModel = document.getElementById("summaryModel");
+    const whatsappSubmit = document.getElementById("whatsappSubmit");
+
+    function updateSummary() {
+      const modelVal = modelInput.value.trim();
+      const servicesText = selectedServices.length ? selectedServices.join(" + ") : "Belirtilmedi";
+
+      summaryBody.textContent = selectedBody;
+      summaryServices.textContent = servicesText;
+      summaryModel.textContent = modelVal || "Belirtilmedi";
+
+      const msg =
+        "Merhaba, web sitenizdeki Teklif Sihirbazı üzerinden yazıyorum.\n" +
+        "• Araç Tipi: " + selectedBody + "\n" +
+        "• İstediğim İşlemler: " + servicesText + "\n" +
+        (modelVal ? "• Araç Marka/Model: " + modelVal + "\n" : "") +
+        "Fiyat ve müsaitlik bilgisi alabilir miyim?";
+
+      whatsappSubmit.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+    }
+
+    bodyBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        bodyBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedBody = btn.dataset.value;
+        updateSummary();
+      });
+    });
+
+    serviceBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const val = btn.dataset.value;
+        if (btn.classList.contains("active")) {
+          if (selectedServices.length > 1) {
+            btn.classList.remove("active");
+            selectedServices = selectedServices.filter((s) => s !== val);
+          }
+        } else {
+          btn.classList.add("active");
+          selectedServices.push(val);
+        }
+        updateSummary();
+      });
+    });
+
+    modelInput.addEventListener("input", updateSummary);
+    updateSummary();
+
+    // Gallery Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".gallery-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        lightboxImg.src = item.dataset.src;
+        lightbox.classList.add("open");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>
